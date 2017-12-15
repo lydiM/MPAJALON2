@@ -56,7 +56,7 @@ function addInteraction(vector1) {
       for (var i =angle1; i<nbr;i++){
 
             /*Récupération des angles*/
-           var angle2=document.formu.angle2.value*(Math.PI/180)*i/nbr; //conversion en Radian
+           var angle2=(((document.formu.angle2.value*(Math.PI/180))-angle1)*i/nbr)+angle1; //conversion en Radian
 
            //var angle1=i*Math.PI/nbr; //conversion en Radian
           //  var angle2=i*Math.PI/nbr; //conversion en Radian
