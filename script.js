@@ -77,12 +77,17 @@ function addInteraction(vector1) {
    var offY2 = radius * Math.cos(ang); //décalage de Y
 
    var offX2 = radius * Math.sin(ang); //décalage de X
-  // newCoordinates.push([point[0] + offsetX, point[1] + offsetY], [point[0], point[1]], [point[0] + offsetX2, point[1] + offsetY2], [point[0], point[1]] ); //Calculs des coordonnées des points
-//le bon code pour l'instant
-  newCoordinates.push([point[0] + offsetX, point[1] + offsetY],  [point[0] + offsetX2, point[1] + offsetY2], [point[0] + offsetX, point[1] + offsetY], [point[0], point[1]], [point[0] + offX2, point[1] + offY2], [point[0], point[1]] );
-//newCoordinates.push([point[0] + offsetX, point[1] + offsetY],  [point[0] + offsetX2, point[1] + offsetY2],
-  //                  [point[0] + offsetX, point[1] + offsetY], [point[0], point[1],
-    //                [point[0] + offX2, point[1] + offY2], [point[0], point[1]] );// pour le 2eme angle
+
+//code l'affichage d'une portion de cercle
+   newCoordinates.push([point[0] + offsetX, point[1] + offsetY], [point[0], point[1]],
+                       [point[0] + offsetX2, point[1] + offsetY2],
+                       [point[0], point[1]] ); //Calculs des coordonnées des points
+
+//le bon code pour l'instant, afficher l'arc de cercle
+  /*newCoordinates.push([point[0] + offsetX, point[1] + offsetY],  [point[0] + offsetX2, point[1] + offsetY2],
+                      [point[0] + offsetX, point[1] + offsetY], [point[0], point[1]],
+                      [point[0] + offX2, point[1] + offY2], [point[0], point[1]] );*/
+
 
 }
 //newCoordinates.push([point[0] + offsetX, point[1] + offsetY],  [point[0] + offsetX2, point[1] + offsetY2], [point[0] + offsetX, point[1] + offsetY], [point[0], point[1]], [point[0] + offX2, point[1] + offY2], [point[0], point[1]] );
