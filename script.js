@@ -62,14 +62,6 @@ function addInteraction(vector1) {
            //var angle1=i*Math.PI/nbr; //conversion en Radian
           //  var angle2=i*Math.PI/nbr; //conversion en Radian
 
-  //  var fraction = i % 2 === 0 ? 1 : 0.5;
-  //  var offsetY = radius *fraction* Math.cos(angle1); //décalage de Y
-  //  var offsetX = radius *fraction* Math.sin(angle1); //décalage de X
-
-  // var offsetY2 = radius *fraction* Math.cos(angle2); //décalage de Y
-  //  var offsetX2 = radius *fraction* Math.sin(angle2); //décalage de X
-//***
-
    var offsetY2 =  radius*Math.cos(angle2); //décalage de Y
 
    var offsetX2 = radius*Math.sin(angle2); //décalage de X
@@ -78,22 +70,33 @@ function addInteraction(vector1) {
 
    var offX2 = radius * Math.sin(ang); //décalage de X
 
+
+
+
+   newCoordinates.push(  [point[0] + offsetX2, point[1] + offsetY2]  );
+//**********
 //code l'affichage d'une portion de cercle
-   newCoordinates.push([point[0] + offsetX, point[1] + offsetY], [point[0], point[1]],
+/*  newCoordinates.push([point[0] + offsetX, point[1] + offsetY], [point[0], point[1]],
                        [point[0] + offsetX2, point[1] + offsetY2],
-                       [point[0], point[1]] ); //Calculs des coordonnées des points
+                       [point[0], point[1]] ); //Calculs des coordonnées des points*/
 
 //le bon code pour l'instant, afficher l'arc de cercle
-  /*newCoordinates.push([point[0] + offsetX, point[1] + offsetY],  [point[0] + offsetX2, point[1] + offsetY2],
+/* newCoordinates.push(  [point[0] + offsetX2, point[1] + offsetY2],
                       [point[0] + offsetX, point[1] + offsetY], [point[0], point[1]],
                       [point[0] + offX2, point[1] + offY2], [point[0], point[1]] );*/
+
+  /*    newCoordinates.push([point[0] + offsetX, point[1] + offsetY], //pour le premier point de la  ligne de l'angle
+
+                          [point[0] + offsetX2, point[1] + offsetY2],   // pour le 2eme point de la  ligne de l'angle
+                          [point[0], point[1]], //pour relier les points
+                          [point[0] + offX2, point[1] + offY2], [point[0], point[1]]  );*/
 
 
 }
 //newCoordinates.push([point[0] + offsetX, point[1] + offsetY],  [point[0] + offsetX2, point[1] + offsetY2], [point[0] + offsetX, point[1] + offsetY], [point[0], point[1]], [point[0] + offX2, point[1] + offY2], [point[0], point[1]] );
 
 
-    newCoordinates.push(newCoordinates[0].slice()); //copie du tableau de coordonées
+  //  newCoordinates.push(newCoordinates[0].slice()); //copie du tableau de coordonées
     geometry.setCoordinates([newCoordinates, vector1]);//
     return geometry;
   }; //End geometryFunction
