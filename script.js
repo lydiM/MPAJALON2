@@ -52,7 +52,7 @@ function addInteraction(vector1) {
     var radius = document.formu.distance.value*1852; //taille des segments
     var newCoordinates = []; //Tableau pour stoker les coordonnées des nouveaux points
 
-    var nbr =500;
+    var nbr =100;
     var angle1=document.formu.angle1.value*(Math.PI/180); //conversion en Radian
     var offsetY = radius * Math.cos(angle1); //décalage de Y
     var offsetX = radius * Math.sin(angle1); //décalage de X
@@ -60,8 +60,7 @@ function addInteraction(vector1) {
           /*Récupération des angles*/
            var angle2=(((document.formu.angle2.value*(Math.PI/180))-angle1)*i/nbr)+angle1; //conversion en Radian
              var ang = document.formu.angle2.value*(Math.PI/180);
-           //var angle1=i*Math.PI/nbr; //conversion en Radian
-          //  var angle2=i*Math.PI/nbr; //conversion en Radian
+
 
    var offsetY2 =  radius*Math.cos(angle2); //décalage de Y
 
@@ -74,9 +73,10 @@ function addInteraction(vector1) {
 
 
 
-//le bon code pour l'instant, afficher l'arc de cercle
+//le code finale réussi a 100% :)
 if (i==0  ){
- newCoordinates.push(  [point[0] + offsetX, point[1] + offsetY],  [point[0], point[1]]
+ newCoordinates.push(  [point[0] + offsetX, point[1] + offsetY],  [point[0], point[1]],
+                      [point[0] + offsetX2, point[1]+offsetY2]
 
                     );
 
