@@ -14,8 +14,8 @@ var vector = new ol.layer.Vector({
       color:'rgba(255,255,255,0.2)'
     }),
     stroke: new ol.style.Stroke({
-    //  color: '#ffcc3',
-      color: '#FF0000',
+     color: '#ffcc3',
+    //  color: '#FF0000',
 
       width:2
     }),
@@ -42,16 +42,17 @@ function addInteraction(vector1) {
 
   /*Initialisation de la géometry */
   geometryFunction = function(coordinate, geometry) {
-    if (!geometry) {
-    geometry = new ol.geom.Polygon(null);
-    }
+   if (!geometry) {
+   geometry = new ol.geom.Polygon(0);
+
+  }
 
 
     var point = coordinate[1]; //point de départ
     var radius = document.formu.distance.value*1852; //taille des segments
     var newCoordinates = []; //Tableau pour stoker les coordonnées des nouveaux points
 
-    var nbr = 360;
+    var nbr =500;
     var angle1=document.formu.angle1.value*(Math.PI/180); //conversion en Radian
     var offsetY = radius * Math.cos(angle1); //décalage de Y
     var offsetX = radius * Math.sin(angle1); //décalage de X
@@ -66,38 +67,33 @@ function addInteraction(vector1) {
 
    var offsetX2 = radius*Math.sin(angle2); //décalage de X
 
+
    var offY2 = radius * Math.cos(ang); //décalage de Y
 
    var offX2 = radius * Math.sin(ang); //décalage de X
 
 
 
-
-   newCoordinates.push(  [point[0] + offsetX2, point[1] + offsetY2]  );
-//**********
-//code l'affichage d'une portion de cercle
-/*  newCoordinates.push([point[0] + offsetX, point[1] + offsetY], [point[0], point[1]],
-                       [point[0] + offsetX2, point[1] + offsetY2],
-                       [point[0], point[1]] ); //Calculs des coordonnées des points*/
-
 //le bon code pour l'instant, afficher l'arc de cercle
-/* newCoordinates.push(  [point[0] + offsetX2, point[1] + offsetY2],
-                      [point[0] + offsetX, point[1] + offsetY], [point[0], point[1]],
-                      [point[0] + offX2, point[1] + offY2], [point[0], point[1]] );*/
+if (i==0  ){
+ newCoordinates.push(  [point[0] + offsetX, point[1] + offsetY],  [point[0], point[1]]
 
-  /*    newCoordinates.push([point[0] + offsetX, point[1] + offsetY], //pour le premier point de la  ligne de l'angle
+                    );
 
-                          [point[0] + offsetX2, point[1] + offsetY2],   // pour le 2eme point de la  ligne de l'angle
-                          [point[0], point[1]], //pour relier les points
-                          [point[0] + offX2, point[1] + offY2], [point[0], point[1]]  );*/
+} else {newCoordinates.push(
+                     [point[0] + offsetX2, point[1]+offsetY2]
 
+                 );
+               }
+       if (i ==nbr-1){
+                 newCoordinates.push(
+                                  [point[0] + offX2, point[1] + offY2], [point[0], point[1]]
+                                  );
+               }
 
 }
-//newCoordinates.push([point[0] + offsetX, point[1] + offsetY],  [point[0] + offsetX2, point[1] + offsetY2], [point[0] + offsetX, point[1] + offsetY], [point[0], point[1]], [point[0] + offX2, point[1] + offY2], [point[0], point[1]] );
 
-
-  //  newCoordinates.push(newCoordinates[0].slice()); //copie du tableau de coordonées
-    geometry.setCoordinates([newCoordinates, vector1]);//
+    geometry.setCoordinates([newCoordinates]);//
     return geometry;
   }; //End geometryFunction
 
